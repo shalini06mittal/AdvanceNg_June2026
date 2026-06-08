@@ -1,0 +1,15 @@
+<nav class="main-nav" *ngIf="isLoggedIn()">
+  <div class="nav-brand">
+    <span class="brand-icon">🏦</span>
+    <span class="brand-name">BankTrack</span>
+  </div>
+  <div class="nav-links">
+    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/accounts"  routerLinkActive="active">Accounts</a>
+  </div>
+  <div class="nav-actions">
+    <span class="nav-role">{{ role | titlecase }}</span>
+    <button (click)="logout()" class="btn-logout">Logout</button>
+  </div>
+</nav>
+<router-outlet></router-outlet>

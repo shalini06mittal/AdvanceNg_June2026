@@ -1,0 +1,88 @@
+<div class="dashboard">
+  <!-- Header -->
+  <div class="dashboard-header">
+    <div>
+      <h1>{{ greeting }}, {{ userRole | titlecase }}</h1>
+      <p class="subtitle">Here's your BankTrack overview</p>
+    </div>
+    <a routerLink="/accounts/new" class="btn-primary" *appIfRole="'admin'">
+      + New Account
+    </a>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="stats-grid">
+    <div class="stat-card stat-blue">
+      <div class="stat-icon">🏦</div>
+      <div class="stat-info">
+        <span class="stat-label">Total Accounts</span>
+        <span class="stat-value">{{ totalAccounts }}</span>
+      </div>
+    </div>
+    <div class="stat-card stat-green">
+      <div class="stat-icon">✅</div>
+      <div class="stat-info">
+        <span class="stat-label">Active Accounts</span>
+        <span class="stat-value">{{ activeAccounts }}</span>
+      </div>
+    </div>
+    <div class="stat-card stat-purple">
+      <div class="stat-icon">💰</div>
+      <div class="stat-info">
+        <span class="stat-label">Total Balance</span>
+        <span class="stat-value">{{ totalBalance | currency:"INR":"symbol":"1.0-0" }}</span>
+      </div>
+    </div>
+    <div class="stat-card stat-orange">
+      <div class="stat-icon">📊</div>
+      <div class="stat-info">
+        <span class="stat-label">Inactive Accounts</span>
+        <span class="stat-value">{{ totalAccounts - activeAccounts }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Account Type Breakdown -->
+  <div class="section-grid">
+    <div class="card">
+      <h2 class="card-title">Account Type Breakdown</h2>
+      <div class="type-list">
+        <div class="type-item">
+          <span class="type-dot savings"></span>
+          <span class="type-label">Savings</span>
+          <span class="type-count">{{ savingsCount }}</span>
+        </div>
+        <div class="type-item">
+          <span class="type-dot current"></span>
+          <span class="type-label">Current</span>
+          <span class="type-count">{{ currentCount }}</span>
+        </div>
+        <div class="type-item">
+          <span class="type-dot fixed"></span>
+          <span class="type-label">Fixed Deposit</span>
+          <span class="type-count">{{ fixedCount }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Accounts -->
+    <div class="card">
+      <h2 class="card-title">Recent Accounts
+        <a routerLink="/accounts" class="view-all">View all →</a>
+      </h2>
+      <div class="recent-list">
+        <div class="recent-item" *ngFor="let acc of recentAccounts">
+          <div class="recent-avatar">{{ acc.holderName[0] | uppercase }}</div>
+          <div class="recent-info">
+            <span class="recent-name">{{ acc.holderName | titlecase }}</span>
+            <span class="recent-no">{{ acc.accountNo | accountMask }}</span>
+          </div>
+          <div class="recent-right">
+            <span class="recent-balance">{{ acc.balance | currency:"INR":"symbol":"1.0-0" }}</span>
+            <span [appStatusBadge]="acc.isActive">{{ acc.isActive ? "Active" : "Inactive" }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

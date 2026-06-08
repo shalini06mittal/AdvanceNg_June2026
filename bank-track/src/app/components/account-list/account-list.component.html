@@ -1,0 +1,29 @@
+<div class="account-list-container">
+  <div class="list-header">
+    <h2>Bank Accounts</h2>
+    <a routerLink="/accounts/new" class="btn-primary">+ New Account</a>
+  </div>
+  <table class="accounts-table">
+    <thead>
+      <tr>
+        <th>Account No</th><th>Holder</th><th>Balance</th>
+        <th>Type</th><th>Status</th><th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let acc of accounts">
+        <td>{{ acc.accountNo | accountMask }}</td>
+        <td>{{ acc.holderName | titlecase }}</td>
+        <td>{{ acc.balance | currency:"INR":"symbol":"1.0-0" }}</td>
+        <td>{{ acc.accountType | titlecase }}</td>
+        <td><span [appStatusBadge]="acc.isActive">
+              {{ acc.isActive ? "Active" : "Inactive" }}</span></td>
+        <td class="actions">
+          <a [routerLink]="['/accounts', acc.id]" class="btn-sm">View</a>
+          <a [routerLink]="['/accounts/edit', acc.id]" class="btn-sm btn-edit">Edit</a>
+          <button *appIfRole="'admin'" (click)="delete(acc.id)" class="btn-sm btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

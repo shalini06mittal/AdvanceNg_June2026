@@ -1,0 +1,39 @@
+<div class="form-container">
+  <h2>{{ title }}</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label>Account Number</label>
+      <input formControlName="accountNo" placeholder="e.g. SB001234">
+      <span class="error" *ngIf="f['accountNo'].touched && f['accountNo'].invalid">
+        Account number is required (min 5 chars)
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label>Holder Name</label>
+      <input formControlName="holderName" placeholder="Full name">
+    </div>
+
+    <div class="form-group">
+      <label>Balance (INR)</label>
+      <input type="number" formControlName="balance">
+    </div>
+
+    <div class="form-group">
+      <label>Account Type</label>
+      <select formControlName="accountType">
+        <option value="savings">Savings</option>
+        <option value="current">Current</option>
+        <option value="fixed">Fixed Deposit</option>
+      </select>
+    </div>
+
+    <div class="form-group check">
+      <label><input type="checkbox" formControlName="isActive"> Active</label>
+    </div>
+
+    <button type="submit" class="btn-primary">Save</button>
+    <a routerLink="/accounts" class="btn-secondary">Cancel</a>
+  </form>
+</div>

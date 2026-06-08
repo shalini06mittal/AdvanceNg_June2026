@@ -1,0 +1,60 @@
+<div class="login-page">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="login-logo">🏦</div>
+      <h1>BankTrack</h1>
+      <p>Sign in to your account</p>
+    </div>
+
+    <div class="error-banner" *ngIf="errorMsg">
+      <span>⚠️</span> {{ errorMsg }}
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input id="username" formControlName="username"
+               type="text" placeholder="Enter username"
+               [class.invalid]="f['username'].touched && f['username'].invalid">
+        <span class="field-error"
+              *ngIf="f['username'].touched && f['username'].hasError('required')">
+          Username is required
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-wrapper">
+          <input id="password" formControlName="password"
+                 [type]="showPassword ? 'text' : 'password'"
+                 placeholder="Enter password"
+                 [class.invalid]="f['password'].touched && f['password'].invalid">
+          <button type="button" class="toggle-pw" (click)="togglePassword()">
+            {{ showPassword ? 'Hide' : 'Show' }}
+          </button>
+        </div>
+        <span class="field-error"
+              *ngIf="f['password'].touched && f['password'].hasError('required')">
+          Password is required
+        </span>
+      </div>
+
+      <div class="form-check">
+        <label>
+          <input type="checkbox" formControlName="rememberMe"> Remember me
+        </label>
+      </div>
+
+      <button type="submit" class="btn-login" [disabled]="isLoading">
+        <span *ngIf="isLoading" class="spinner"></span>
+        {{ isLoading ? 'Signing in...' : 'Sign In' }}
+      </button>
+    </form>
+
+    <div class="login-hint">
+      <p><strong>Demo credentials:</strong></p>
+      <p>Admin: admin / bank123</p>
+      <p>Viewer: viewer / view123</p>
+    </div>
+  </div>
+</div>
