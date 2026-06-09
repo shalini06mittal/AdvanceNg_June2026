@@ -1,0 +1,59 @@
+<h3>User Profile Information</h3>
+
+<!-- <h5>Single Form Control</h5>
+<p>Name Value: {{name.value}}</p>
+<p>Control Status: {{name.status}}</p>
+<p>{{name |json}}</p>
+<label for="name">Name: </label>
+<input type="text" [formControl]="name">
+
+<span *ngIf="name.touched && 
+name.invalid">
+    <span style="color:red" *ngIf="name.errors?.['required']">Name is required</span>
+    <span *ngIf="name.errors?.['minlength']">Min 5 characters</span>
+</span> -->
+<!-- <span *ngIf="name.invalid">Name is required</span> -->
+
+<!-- <div><button (click)="subscribe()" [disabled]="!name.valid">Subscribe</button></div>
+<div><button (click)="updateName()">Update name</button></div> -->
+
+<h5>Form Group Demo</h5>
+
+<p>Valid: {{profileForm.valid}}</p>
+<p>Status: {{profileForm.status}}</p>
+<p>Values : {{profileForm.value | json}}</p>
+
+<form [formGroup]="profileForm" (submit)="submit()" >
+    <label for="firstname">First Name</label>
+    <input type="text" name="firstname" id="firstname"
+    formControlName="firstName">
+    <label for="lastName">Last Name</label>
+    <input type="text" name="lastName" id="lastName"
+    formControlName="lastName">
+    <div formGroupName="address">
+        <label for="city">city</label>
+        <input type="text" name="city" id="city"
+        formControlName="city">
+        <label for="country">country</label>
+        <input type="text" name="country" id="country"
+        formControlName="country">
+
+    </div>
+    <div><button type="submit"
+        [disabled]="!profileForm.valid">Register</button></div>
+</form>
+
+<h5>Access to single element within a form group</h5>
+<p>Option 1: get the form control value directly from form group</p>
+<p>First Name: {{ profileForm.get('firstName')?.value}}</p>
+<!-- <p>First Name: {{ profileForm.get('firstName')?.status}}</p> -->
+
+
+<p>Option 2: get the form control value using a getter</p>
+<p>First Name: {{ fname?.value}}</p>
+
+<p>Option 3: get the form control value fromgroup value</p>
+<p>First Name: {{ profileForm.value.firstName}}</p>
+
+<p>Option 4: get the form control value fromgroup controls object</p>
+<p>First Name: {{ profileForm.controls['firstName'].value}}</p>

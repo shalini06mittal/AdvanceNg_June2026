@@ -1,0 +1,9 @@
+<h2>Template Driven Forms</h2>
+
+<!-- <p>Username : {{username}}</p> -->
+
+<p>{{userForm.value | json}}</p>
+<form #userForm="ngForm" (submit)="submit(userForm)">
+    <input type="text" name="username" [(ngModel)]="username" id="">
+    <button type="submit">Submit</button>
+</form>

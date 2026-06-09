@@ -1,0 +1,34 @@
+
+<h5>Form Group Demo</h5>
+
+<p>Valid: {{profileForm.valid}}</p>
+<p>Status: {{profileForm.status}}</p>
+<p>Values : {{profileForm.value | json}}</p>
+
+<form [formGroup]="profileForm" (submit)="submit()" >
+    <label for="firstname">First Name</label>
+    <input type="text" name="firstname" id="firstname"
+    formControlName="firstName">
+    <label for="lastName">Last Name</label>
+    <input type="text" name="lastName" id="lastName"
+    formControlName="lastName">
+    <div formGroupName="address">
+        <label for="city">city</label>
+        <input type="text" name="city" id="city"
+        formControlName="city">
+        <label for="country">country</label>
+        <input type="text" name="country" id="country"
+        formControlName="country">
+
+    </div>
+    <div formArrayName="skills">
+        <button type="button" (click)="addSkill()">+ Add another skill</button>
+        <label for="">Skills</label>
+        <div *ngFor="let skill of skills.controls; let i = index">
+            <span>Skill {{i+1}} :</span>
+            <input type="text" [formControlName]="i">
+        </div>
+    </div>
+    <div><button type="submit"
+        [disabled]="!profileForm.valid">Register</button></div>
+</form>
