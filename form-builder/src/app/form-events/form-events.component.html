@@ -1,0 +1,24 @@
+<h1>Form Events</h1>
+<div class="container">
+    <form [formGroup]="postForm">
+        <input type="text" class="form-control mt-2" placeholder="title" name="" formControlName="title" id="">
+        <input type="text" class="form-control mt-2" placeholder="content" name="" formControlName="content" id="">
+        <div class="row mt-2">
+            <div class="col">
+                <button (click)="loadExistingDraft({title:'some title', content:'some content'})">Load Data</button>
+            </div>
+            
+            <div class="col">
+                    <button class="btn-small" (click)="setPost()">
+                        Set Post Form Values</button>
+            </div>    
+            <div class="col">
+                 <button class="btn-small" (click)="setTitle()">Set Title</button>
+            </div>    
+        </div>
+    </form>
+    <div class="mt-3">
+        <input placeholder="search" type="text" name="" [formControl]="searchControl" id="">
+        <button class="btn-small" (click)="setAngular()">Set Search Data</button>
+    </div>
+</div>

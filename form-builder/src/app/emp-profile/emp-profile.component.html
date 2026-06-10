@@ -1,0 +1,78 @@
+<div class="container">
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+        <input class="form-control" formControlName="userName"/>
+    </div>
+    <div class="mb-3">
+        <input class="form-control" formControlName="firstName" placeholder="First Name" />
+    </div>
+  
+    <div class="mb-3">
+        <input class="form-control" formControlName="lastName"  placeholder="Last Name" />
+    </div>
+  
+    <div class="mb-3">
+        <input class="form-control" formControlName="email"     placeholder="Email" />
+    </div>
+      <div class="mb-3">
+        <textarea class="form-control" formControlName="bio" rows="2"  placeholder="Bio"></textarea>
+        <div>Characters: {{bioLength}}</div>
+    </div>
+  <!-- Nested address group -->
+  <div formGroupName="address">
+      <div class="mb-3">
+        <input class="form-control" formControlName="street"  placeholder="Street" />
+    </div>
+    
+      <div class="mb-3">
+        <input class="form-control" formControlName="city"    placeholder="City" />
+    </div>
+    
+      <div class="mb-3">
+        <input class="form-control" formControlName="zipCode" placeholder="ZIP" />
+    </div>
+  </div>
+   <div formArrayName="skills">
+    <label for="email" class="form-label pe-2">Skills:</label>
+        <div *ngFor="let skill of skills.controls; let i = index">
+            <div class="row">
+                <div class="col">
+                    <input class="form-control" [formControlName]="i" placeholder="Skill {{ i + 1 }}" />
+                </div>
+                 <div class="col">
+                        <button class="btn btn-primary" type="button" (click)="removeSkill(i)">Remove</button>
+                 </div>
+            </div>
+           
+        </div>
+        <button type="button" class="btn-small btn-primary mt-2" (click)="addSkill()"> + Add Skill</button>
+    </div>
+    <!-- Template for nested FormGroup inside FormArray -->
+    <div formArrayName="experience">
+        <label for="email" class="form-label pe-2">Experience: </label>
+        <div *ngFor="let exp of experience.controls; let i = index"
+            [formGroupName]="i">
+            <div class="row">
+                <div class="col">
+                    <input class="form-control" formControlName="company" placeholder="Company" />
+                </div>
+                <div class="col">
+                    <input class="form-control" formControlName="role"    placeholder="Role" />
+                </div>
+                <div class="col">
+                    <input class="form-control" formControlName="years"   placeholder="Years" type="number" />
+                </div>
+                <div class="col">
+                    <button  class="btn-small btn-primary" type="button" (click)="experience.removeAt(i)">Remove</button>
+                </div>
+            </div>
+            
+        </div>
+        <button  class="btn-small btn-primary mt-3" type="button" (click)="addExperience()">+ Add Experience</button>
+        
+    </div>
+    
+    
+  <button  class="btn-small btn-primary mt-2 mb-3" type="submit" [disabled]="!isFormReady">Submit</button>
+</form>
+</div>

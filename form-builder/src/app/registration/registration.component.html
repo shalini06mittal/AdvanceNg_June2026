@@ -1,0 +1,101 @@
+<div class="container">
+    <h1>FormBuilder - Registration Form</h1>
+    <hr />
+
+    {{ registrationForm.get('userName')?.status}} : {{registrationForm.get('userName')?.pending}}
+
+    <hr />
+
+    <!-- associate the model with view -->
+    <form [formGroup]="registrationForm">
+
+        <div class="form-group">
+            <label for="">Username: </label>
+            <input formControlName="userName" type="text">
+
+            <div *ngIf="registrationForm.get('userName')?.invalid &&
+                    registrationForm.get('userName')?.touched">
+                <small class="text-danger" *ngIf="registrationForm.get('userName')?.errors?.['required']">* UserName is
+                    required</small>
+                <small class="text-danger" *ngIf="registrationForm.get('userName')?.errors?.['minlength']">* UserName
+                    must 5 chrs.</small>
+                <small class="text-danger" *ngIf="registrationForm.get('userName')?.errors?.['validateUserName']">
+                    {{registrationForm.get('userName')?.errors?.['validateUserName'].value}} not allowed
+                </small>
+                <!-- Loading -->
+                <div *ngIf="registrationForm.get('userName')?.pending">
+                    Checking availability...
+                </div>
+
+                <!-- Error -->
+                <div *ngIf="registrationForm.get('userName')?.errors?.['usernameTaken']">
+                    Username already exists.
+                </div>
+
+            </div>
+        </div>
+
+        <!-- email -->
+        <div class="form-group">
+            <label for="">Email:</label>
+
+            <!-- class binding to show red border when form control/field is invalid -->
+            <input formControlName="email" type="text" class="form-control">
+
+            <!-- single error with a class binding -->
+            <small *ngIf="!(emailControl?.valid || emailControl?.untouched)">* Email is required</small>
+        </div>
+
+        <!-- subscribe checkbox -->
+        <div class="form-check mb-3">
+            <input formControlName="subscribe" type="checkbox" class="form-check-input">
+            <label for="" class="form-check-label">Subscribe/Send me promotion offers</label>
+        </div>
+
+        <div class="form-group">
+            <label for="">Password:</label>
+            <input formControlName="password" type="password" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="">Confirm Password:</label>
+            <input formControlName="confirmPassword" type="password" class="form-control">
+            <small class="text-danger" *ngIf="registrationForm?.errors?.['passwordMisMatchError']">Confirm Password not
+                matched!</small>
+        </div>
+
+        <hr />
+
+        <h3>this.fb.group="address: Nested FormGroup with child properties </h3>
+
+        <div formGroupName="address">
+
+            <div class="form-group">
+                <label for="">City:</label>
+                <input formControlName="city" type="text" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="">State:</label>
+                <input formControlName="state" type="text" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="">Postal Code:</label>
+                <input formControlName="postalcode" type="text" class="form-control">
+            </div>
+
+        </div>
+
+        <hr />
+
+        <button class="btn btn-primary" type="submit">Register</button>
+        <!-- <button class="btn btn-success ml-4" (click)="loadApiDataSetValue()">Load API Data <br /> SetValue() </button>-->
+        <!-- <button class="btn btn-secondary ml-4" (click)="loadApiDataPatchValue()">Load API Data <br /> PatchValue()
+    </button> -->
+
+
+    </form>
+
+</div>
+<hr />
