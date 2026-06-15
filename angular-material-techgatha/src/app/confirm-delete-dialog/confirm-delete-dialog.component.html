@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Confirm Delete</h2>
+    <mat-dialog-content>
+       <p>Are you sure you want to remove <strong>{{ data.employeeName }}</strong>?</p>
+      <p style="color:#757575; font-size:14px; margin-top:8px;">
+        This action cannot be undone.
+      </p>
+    </mat-dialog-content>
+    <mat-dialog-actions align='end'>
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-raised-button color='warn' [mat-dialog-close]='true'>
+        Delete
+      </button>
+    </mat-dialog-actions>

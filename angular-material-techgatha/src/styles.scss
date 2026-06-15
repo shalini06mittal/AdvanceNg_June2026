@@ -1,0 +1,392 @@
+/* You can add global styles to this file, and also import other style files */
+
+// @use './custom-theme';
+
+/* You can add global styles to this file, and also import other style files */
+// @use './custom-theme';
+
+@use '@angular/material' as mat;
+
+// ─── Typography ──────────────────────────────────────────────────────────────
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+// ─── Palettes ────────────────────────────────────────────────────────────────
+$my-primary: mat.define-palette(mat.$indigo-palette, 700);
+$my-accent:  mat.define-palette(mat.$teal-palette, 400);
+$my-warn:    mat.define-palette(mat.$red-palette);
+
+// ─── Light Theme ─────────────────────────────────────────────────────────────
+$my-theme: mat.define-light-theme((
+  color: (
+    primary: $my-primary,
+    accent:  $my-accent,
+    warn:    $my-warn,
+  ),
+  typography: mat.define-typography-config(
+    $font-family: 'Roboto, sans-serif',
+    $body-1: mat.define-typography-level(16px, 24px, 400),
+    $body-2: mat.define-typography-level(14px, 20px, 500),
+  ),
+  density: 0,
+));
+
+@include mat.all-component-themes($my-theme);
+
+// ─── Dark Theme ──────────────────────────────────────────────────────────────
+$dark-theme: mat.define-dark-theme((
+  color: (
+    primary: mat.define-palette(mat.$blue-grey-palette),
+    accent:  mat.define-palette(mat.$amber-palette),
+    warn:    mat.define-palette(mat.$red-palette),
+  ),
+));
+
+.dark-mode {
+  @include mat.all-component-colors($dark-theme);
+  background-color: #303030;
+  color: #ffffff;
+}
+
+// ─── Global Reset ────────────────────────────────────────────────────────────
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+// ─── App Shell ───────────────────────────────────────────────────────────────
+.app-container {
+  height: 100vh;
+}
+
+.sidenav {
+  width: 240px;
+  background: #fff;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidenav-header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background: #283593;
+  color: #fff;
+
+  mat-icon {
+    margin-right: 12px;
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+  }
+
+  span {
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+
+.active-link {
+  background: rgba(40, 53, 147, 0.1) !important;
+  border-left: 4px solid #283593;
+  color: #283593 !important;
+
+  mat-icon {
+    color: #283593 !important;
+  }
+}
+
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.main-content {
+  padding: 24px;
+  min-height: calc(100vh - 64px);
+  background: #f5f5f5;
+}
+
+.dark-mode .main-content {
+  background: #424242;
+}
+
+// ─── Avatar ──────────────────────────────────────────────────────────────────
+.avatar-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #283593, #00897b);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+// ─── Status Chips ────────────────────────────────────────────────────────────
+.status-active {
+  background-color: #e8f5e9 !important;
+  color: #2e7d32 !important;
+}
+
+.status-leave {
+  background-color: #fff3e0 !important;
+  color: #e65100 !important;
+}
+
+.status-inactive {
+  background-color: #fce4ec !important;
+  color: #c62828 !important;
+}
+
+// ─── Snackbar Panel Classes ──────────────────────────────────────────────────
+.snack-success .mdc-snackbar__surface {
+  background-color: #2e7d32 !important;
+  color: #fff !important;
+}
+
+.snack-error .mdc-snackbar__surface {
+  background-color: #c62828 !important;
+  color: #fff !important;
+}
+
+.snack-warn .mdc-snackbar__surface {
+  background-color: #e65100 !important;
+  color: #fff !important;
+}
+
+.snack-info .mdc-snackbar__surface {
+  background-color: #1565c0 !important;
+  color: #fff !important;
+}
+
+// ─── Form Layout Helpers ─────────────────────────────────────────────────────
+.full-width {
+  width: 100%;
+}
+
+.half-width {
+  width: calc(50% - 8px);
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+// ─── Page Header ─────────────────────────────────────────────────────────────
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #283593;
+  }
+}
+
+// ─── Loading ─────────────────────────────────────────────────────────────────
+.loading-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+}
+
+// ─── Table ───────────────────────────────────────────────────────────────────
+.mat-mdc-table {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.mat-mdc-header-row {
+  background-color: #283593 !important;
+}
+
+.mat-mdc-header-cell {
+  color: #fff !important;
+  font-weight: 600 !important;
+}
+
+.mat-mdc-row:hover {
+  background-color: #e8eaf6 !important;
+  transition: background-color 0.2s ease;
+}
+
+.table-container {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.table-toolbar {
+  background: #fff !important;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  gap: 16px;
+  padding: 8px 16px !important;
+  height: auto !important;
+  flex-wrap: wrap;
+  border-radius: 8px 8px 0 0;
+}
+
+.filter-field {
+  flex: 1;
+  min-width: 200px;
+}
+
+// ─── Dashboard Stats Cards ───────────────────────────────────────────────────
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 8px;
+
+  .stat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 8px;
+  }
+
+  .stat-value {
+    font-size: 36px;
+    font-weight: 700;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: #757575;
+  }
+}
+
+// ─── Employee Card ───────────────────────────────────────────────────────────
+.employee-card {
+  margin-bottom: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+  }
+}
+
+.card-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #283593, #00897b);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.skills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+// ─── Compact Table Density Override ──────────────────────────────────────────
+.compact-table {
+  @include mat.table-density(-2);
+  @include mat.paginator-density(-2);
+}
+
+// ─── Drag Drop List ──────────────────────────────────────────────────────────
+.drag-list {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.drag-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: move;
+  transition: background 0.15s;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: #e8eaf6;
+  }
+
+  mat-icon {
+    color: #9e9e9e;
+  }
+}
+
+.cdk-drag-preview {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.3;
+}
+
+// ─── Tab Content Padding ─────────────────────────────────────────────────────
+.tab-content {
+  padding: 16px;
+}
+
+.tab-icon {
+  margin-right: 6px;    
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

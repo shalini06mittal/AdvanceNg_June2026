@@ -1,0 +1,36 @@
+<mat-card class="employee-card">
+    <mat-card-header>
+        <!-- Avatar -->
+        <div mat-card-avatar class="avatar">{{ employee.avatar}}</div>
+        <mat-card-title>{{employee.firstName}} {{employee.lastName}}</mat-card-title>
+        <mat-card-subtitle>{{employee.role}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <p><mat-icon inline>business</mat-icon>{{employee.department}}</p>
+        <p><mat-icon inline>email</mat-icon>{{employee.email}}</p>
+
+        <p>
+            <mat-icon inline style="vertical-align:middle; margin-right:4px;">attach_money</mat-icon>
+            {{ employee.salary | currency:'USD':'symbol':'1.0-0' }}
+        </p>
+        <!-- Status chip -->
+        <mat-chip-listbox aria-label='Status'>
+            <mat-chip [ngClass]='statusClass'>{{ employee.status }}</mat-chip>
+        </mat-chip-listbox>
+
+        <!-- Skills -->
+        <div class='skills'>
+            <mat-chip-listbox>
+                <mat-chip *ngFor='let skill of employee.skills'>{{ skill }}</mat-chip>
+            </mat-chip-listbox>
+        </div>
+    </mat-card-content>
+
+    <mat-card-actions align='end'>
+        <button mat-button color='primary' (click)='onView()'>VIEW</button>
+        <button mat-icon-button color='warn' (click)='onDelete()'>
+            <mat-icon>delete</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>

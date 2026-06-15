@@ -1,0 +1,90 @@
+<div *ngIf="isLoading" class="loading-wrapper">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!isLoading && employee">
+
+  <div class="page-header">
+    <button mat-icon-button routerLink="/employees" matTooltip="Back">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h2>{{ employee.firstName }} {{ employee.lastName }}</h2>
+    <mat-chip [ngClass]="getStatusClass(employee.status)">{{ employee.status }}</mat-chip>
+  </div>
+
+  <mat-tab-group animationDuration="300ms" color="primary">
+
+    <!-- Profile Tab -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">person</mat-icon> Profile
+      </ng-template>
+      <div class="tab-content">
+        <mat-card>
+          <mat-card-content>
+            <div class="profile-grid">
+              <div class="profile-avatar">
+                <div class="avatar-circle" style="width:80px;height:80px;font-size:24px;">
+                  {{ employee.avatar }}
+                </div>
+              </div>
+              <div class="profile-info">
+                <p><strong>Email:</strong> {{ employee.email }}</p>
+                <p><strong>Department:</strong> {{ employee.department }}</p>
+                <p><strong>Role:</strong> {{ employee.role }}</p>
+                <p><strong>Salary:</strong> {{ employee.salary | currency:'USD':'symbol':'1.0-0' }}</p>
+                <p><strong>Join Date:</strong> {{ employee.joinDate | date:'mediumDate' }}</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-tab>
+
+    <!-- Skills Tab -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">build</mat-icon> Skills
+      </ng-template>
+      <div class="tab-content">
+        <mat-card>
+          <mat-card-content>
+            <div class="skills-row">
+              <mat-chip
+                *ngFor="let skill of employee.skills"
+                color="primary"
+                highlighted>
+                {{ skill }}
+              </mat-chip>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-tab>
+
+    <!-- Salary Tab -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">attach_money</mat-icon> Salary
+      </ng-template>
+      <div class="tab-content">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Compensation</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p class="salary-display">{{ employee.salary | currency }}</p>
+            <p style="color:#757575;">Annual gross salary</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>
+
+<div *ngIf="!isLoading && !employee" style="text-align:center; padding:60px;">
+  <mat-icon style="font-size:64px; color:#bdbdbd;">person_off</mat-icon>
+  <p>Employee not found.</p>
+  <button mat-raised-button color="primary" routerLink="/employees">Back to List</button>
+</div>

@@ -1,0 +1,51 @@
+$olive-green-palette: (
+  50:  #f4f6ee,
+  100: #e4e9d5,
+  200: #d2dcb9,
+  300: #c0ce9c,
+  400: #b1c286,
+  500: #a2b56f,
+  600: #9aad67,
+  700: #90a45c,
+  800: #869c52,
+  900: #758c40,
+
+  contrast: (
+    50:  black,
+    100: black,
+    200: black,
+    300: black,
+    400: black,
+    500: black,
+    600: white,
+    700: white,
+    800: white,
+    900: white
+  )
+);
+$company-blue: (
+  50: #e3f2fd,
+  100: #bbdefb,
+  200: #90f2f9,
+  300: #64b5f6,
+  400: #42a5f5,
+  500: #0057b8,
+  600: #004fa8,
+  700: #004699,
+  800: #003d89,
+  900: #002c66,
+
+  contrast: (
+    50: black,
+    100: black,
+    200: black,
+    300: black,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white
+  )
+);
+
