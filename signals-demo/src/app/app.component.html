@@ -1,0 +1,25 @@
+<h1>Without Signals</h1>
+
+<!-- <p>Counter : {{counter}}</p> -->
+ <p>Counter : {{counter()}}</p>
+<p>Count after calculation : {{expensiveCalculation}}</p>
+<!-- <p>Name: {{name}}</p> -->
+ <p>Total: {{total()}}</p>
+ <p>Name: {{name()}}</p>
+ <p>Name: {{names()}}</p>
+
+<input type="text" name="" #val id="">
+<button (click)="increment()">Increment</button>
+<button (click)="changeName(val.value)">Change Name</button>
+<ul>
+  <li *ngFor="let emp of employees()">
+    {{ emp }}
+  </li>
+</ul>
+<button (click)="addemployee()">Add employee</button>
+
+<p>Username: {{ user().name }}</p>
+<p>User City: {{ user().city }}</p>
+<button (click)="changeCity()">Chnage City</button>
+<p>Service Count : {{state.count()}}</p>
+<button (click)="incrementServ()">Increment Service Count</button>

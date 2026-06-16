@@ -1,1 +1,25 @@
-<p>settings works!</p>
+<div class="page-header">
+  <h2>Settings</h2>
+</div>
+
+<mat-card style="max-width: 500px;">
+  <mat-card-header>
+    <mat-card-title>Appearance</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+    <mat-list>
+      <mat-list-item>
+        <mat-icon matListItemIcon>dark_mode</mat-icon>
+        <span matListItemTitle>Dark Mode</span>
+        <span matListItemLine>Switch between light and dark theme</span>
+        <mat-slide-toggle
+          [checked]="themeService.isDarkMode"
+          (change)="themeService.toggle()"
+          color="primary">
+        </mat-slide-toggle>
+      </mat-list-item>
+    </mat-list>
+
+  </mat-card-content>
+</mat-card>
