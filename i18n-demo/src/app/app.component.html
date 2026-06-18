@@ -1,0 +1,72 @@
+<h1>ANGULAR LOCALIZE DEMO</h1>
+
+<h3 i18n>Hello World</h3>
+
+<p i18n>Welcome to Angular Internationalization</p>
+
+<button i18n>Submit</button>
+
+<h3 i18n="page title|Main welcome heading">
+  Hello World
+</h3>
+<input
+  placeholder="Enter Name"
+  i18n-placeholder>
+  <img
+  src="../assets/logo11.png"
+  title="Company Logo"
+  i18n-title>
+
+  <p i18n>Date : {{today | date }}</p>
+  <p i18n>Amount {{ 23.67777 | currency }}</p>
+
+<button (click)="switchLanguage('en-US')">
+  English
+</button>
+
+<button (click)="switchLanguage('fr')">
+  Français
+</button>
+
+<button (click)="switchLanguage('ar')">
+  العربية
+</button>
+
+<h1>Angular Translate</h1>
+
+<h1>{{ 'HELLO_WORLD' | translate }}</h1>
+
+<h2>{{ 'WELCOME_MESSAGE' | translate }}</h2>
+
+<button>
+  {{ 'SUBMIT' | translate }}
+</button>
+
+<hr>
+
+<h1>{{ 'PAGE_TITLE' | translate }}</h1>
+
+<img
+  src="../assets/logo11.png"
+  [title]="'COMPANY_LOGO' | translate"
+  [alt]="'COMPANY_LOGO' | translate"
+  width="150">
+
+<br><br>
+
+<input
+  type="text"
+  [placeholder]="'ENTER_NAME' | translate">
+
+<br><br>
+
+<label>
+  {{ 'ENTER_NAME' | translate }}
+</label>
+<input type="text">
+<!-- <h1>{{ 'HOME.TITLE' | translate }}</h1>
+
+<button>{{ 'BUTTONS.SUBMIT' | translate }}</button>
+
+<input [placeholder]="'FORM.ENTER_NAME' | translate"> -->
+

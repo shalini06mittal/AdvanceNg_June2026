@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="4584092443788135411" datatype="html">
+        <source>Hello World</source>
+        <target>Bonjour le monde</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="27230008004157604" datatype="html">
+        <source>Welcome to Angular Internationalization</source>
+        <target>Bienvenue dans l'internationalisation Angular</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="935187492052582731" datatype="html">
+        <source>Submit</source>
+        <target>Soumettre</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2793164411496739670" datatype="html">
+        <source> Hello World
+</source>
+      <target>Bonjour le monde</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">9,11</context>
+        </context-group>
+        <note priority="1" from="description">Main welcome heading</note>
+        <note priority="1" from="meaning">page title</note>
+      </trans-unit>
+      <trans-unit id="1367870144394891892" datatype="html">
+        <source>Enter Name</source>
+        <target>Saisissez votre nom</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="189395343509305217" datatype="html">
+        <source>Company Logo</source>
+        <target>Logo de l'entreprise</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3840106693550052878" datatype="html">
+        <source>Date : <x id="INTERPOLATION" equiv-text="{{today| date }}"/></source>
+        <target>Date <x id="INTERPOLATION"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1022146640675806048" datatype="html">
+        <source>Amount <x id="INTERPOLATION" equiv-text="{{ 23.67777 | currency }}"/></source>
+        <target>Montant <x id="INTERPOLATION"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

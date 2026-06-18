@@ -12,5 +12,4 @@ export class COunterService {
   increment(){
     this._count.update(v => v+1);
   }
-
 }

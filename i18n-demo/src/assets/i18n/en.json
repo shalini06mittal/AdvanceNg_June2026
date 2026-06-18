@@ -1,0 +1,21 @@
+{
+    "HELLO_WORLD": "Hello World",
+    "WELCOME_MESSAGE": "Welcome to Angular Internationalization",
+    "SUBMIT": "Submit",
+    "PAGE_TITLE": "Hello World",
+    "COMPANY_LOGO": "Company Logo",
+    "ENTER_NAME": "Enter Name",
+    "HOME": {
+        "TITLE": "Hello World",
+        "WELCOME": "Welcome to Angular Internationalization"
+    },
+    "BUTTONS": {
+        "SUBMIT": "Submit"
+    },
+    "FORM": {
+        "ENTER_NAME": "Enter Name"
+    },
+    "COMMON": {
+        "COMPANY_LOGO": "Company Logo"
+    }
+}
