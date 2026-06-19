@@ -1,0 +1,21 @@
+<app-chart></app-chart>
+
+
+
+<h1>Animation Demo</h1>
+
+<h3>Click the button to change its color</h3>
+<p>{{isGreen}}</p>
+<button
+style="padding:20px;font-size: 20px;" 
+(click)="toggleShow()">{{buttonText}}</button>
+<br/>
+<button *ngIf="show" [@toggleGreenButton]="isGreen"
+style="padding:20px;font-size: 20px;" 
+(click)="toggleGreen()">Toggle Me</button>
+
+<h3>Arcing ball</h3>
+<button
+(click)="toggleBounce()"
+>Arc the ball</button>
+<div class="ball" [@animateArc]="arc"> </div>

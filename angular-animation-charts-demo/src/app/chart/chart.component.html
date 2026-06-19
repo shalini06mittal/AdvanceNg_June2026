@@ -1,0 +1,31 @@
+<h1>Charts Demo</h1>
+<div style="width: 40%;">
+    <canvas #lineChart
+        baseChart
+        [data] = "lineChartData"
+        [type] ="'line'"
+    ></canvas>
+
+</div>
+
+<button (click)="reloadChart()">Animate</button>
+
+<div style="width: 40%;">
+     <canvas #lineChart1
+        baseChart
+        [data] = "lineChartData1"
+        [type] ="'line'"
+        [options] = "lineChartOptions1"
+    ></canvas>
+
+</div>
+
+<div style="width: 60%;">
+    
+ <canvas 
+        baseChart
+        [data] = "barChartData"
+        [type] ="'bar'"
+        [options] = "barChartOptions"
+    ></canvas>
+</div>
